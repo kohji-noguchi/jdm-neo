@@ -5,19 +5,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JDMLures Detail</title>
 
-<!-- 共通CSS -->
 <link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="detail.css">
 
 <!-- favicon -->
 <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
+
+<!-- 本番用　PayPal SDK -->
+<!-- <script src="https://www.paypal.com/sdk/js?client-id=ATPf9JYiBbX0M034sH87U2yChqPFo-30PhTPUhYgP3m4U_1AjV7tQ-MkbVCx2LoN2LBmD9vc5IsjIi1C&currency=USD&locale=en_US"></script> -->
+
+
+<!-- テスト用　PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD&locale=en_US"></script>
+
+<style>
+  /* 最小限でボタンが崩れないようにする */
+  .price-text {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+  .paypal-wrapper {
+    display: block;
+  }
+</style>
 </head>
 
 <body>
 
-<!-- ================= 共通トップバー(index共通) ================= -->
+<!-- Header -->
 <div class="top-bar">
   <div class="top-inner">
     <img src="https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg" class="flag" alt="Japan Flag">
@@ -25,26 +44,23 @@
   </div>
 </div>
 
-<!-- ================= 共通ロゴ(index共通) ================= -->
 <section class="section logo-section">
-  <img src="../img/logo.png" alt="JDMLures Logo">
+  <img src="img/index/logo.webp" alt="JDMLures Logo">
 </section>
 
-<!-- ================= detailタイトル & 価格 ================= -->
+<!-- Detail Title & Top Price -->
 <section class="section">
   <div class="container">
     <h2 id="detail-title">Sample Product</h2>
 
-    <div class="price-buy-wrapper top">
-      <p id="detail-price">$0</p>
-      <div id="paypal-button-container-top" class="paypal-wrapper"></div>
-    </div>
+    <p class="price-text">$0</p>
+    <div id="paypal-button-container-top" class="paypal-wrapper"></div>
 
-    <p id="detail-desc">This is a sample product description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <p id="detail-desc">This is a sample product description.</p>
   </div>
 </section>
 
-<!-- ================= HERO（indexスライド再利用） ================= -->
+<!-- Hero -->
 <section class="section hero">
   <div class="container">
     <img id="detail-hero-img" src="../img/hero/sample-hero.jpg" alt="Product Hero">
@@ -52,79 +68,81 @@
   </div>
 </section>
 
-<!-- ================= 別角度ショット ================= -->
+<!-- Additional Shots -->
 <section class="section">
   <div class="container">
-    <img id="detail-img-1" src="../img/detail/sample1.jpg" alt="Angle 1">
-    <p class="image-caption" id="caption-1">Front angle view</p>
+    <img id="detail-img-1" src="../img/detail/sample1.jpg" alt="Front Angle">
+    <p class="image-caption">Front Angle View</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <img id="detail-img-2" src="../img/detail/sample2.jpg" alt="Angle 2">
-    <p class="image-caption" id="caption-2">Side angle view</p>
+    <img id="detail-img-2" src="../img/detail/sample2.jpg" alt="Side Angle">
+    <p class="image-caption">Side Angle View</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <img id="detail-img-3" src="../img/detail/sample3.jpg" alt="Angle 3">
-    <p class="image-caption" id="caption-3">Rear angle view</p>
+    <img id="detail-img-3" src="../img/detail/sample3.jpg" alt="Rear Angle">
+    <p class="image-caption">Rear Angle View</p>
   </div>
 </section>
 
-<!-- ================= 支払いエリア(detail専用) ================= -->
+<!-- Payment Section Bottom -->
 <section class="section back-section">
-  <div class="payment-icons">
-    <!-- PayPal -->
-    <svg viewBox="0 0 140 40">
-      <g transform="translate(0,4)">
-        <path fill="#003087" d="M18 4c6 0 10 4 9 9s-5 9-11 9h-4l-2 12H4l5-30h9z"/>
-        <path fill="#009CDE" d="M22 4c5 0 8 3 7 7s-4 7-9 7h-5l-2 12H6l4-26h12z"/>
-      </g>
-      <text x="42" y="26" font-family="Arial" font-size="22" font-weight="700">
-        <tspan fill="#003087">Pay</tspan><tspan fill="#009CDE">Pal</tspan>
-      </text>
-    </svg>
-    <img src="../custom/c_img/visa.png" alt="Visa">
-    <svg viewBox="0 0 48 32">
-      <circle cx="18" cy="16" r="10" fill="#EB001B"/>
-      <circle cx="30" cy="16" r="10" fill="#F79E1B"/>
-      <path fill="#FF5F00" d="M24 6a10 10 0 000 20 10 10 0 000-20z"/>
-    </svg>
-    <svg viewBox="0 0 60 38">
-      <rect width="60" height="38" fill="#2E77BB"/>
-      <text x="30" y="16" font-size="9" fill="#ffffff" font-family="Arial" font-weight="bold" text-anchor="middle">AMERICAN</text>
-      <text x="30" y="28" font-size="9" fill="#ffffff" font-family="Arial" font-weight="bold" text-anchor="middle">EXPRESS</text>
-    </svg>
-  </div>
-
-  <p class="caution">
-    ✅ <span style="color:#00457C;">All payments are securely processed via PayPal. You may pay easily with your debit or credit card — no PayPal account required.</span>
-  </p>
-
   <div class="container">
-    <div class="price-buy-wrapper bottom">
-      <p id="detail-price-bottom">$0</p>
-      <div id="paypal-button-container-bottom" class="paypal-wrapper"></div>
-    </div>
+    <p class="price-text">$0</p>
+    <div id="paypal-button-container-bottom" class="paypal-wrapper"></div>
 
     <a href="../index.html" class="back-button">BACK</a>
   </div>
-
-  <!-- ================= フッター(index共通) ================= -->
-  <footer class="footer">
-    <p>© 2026 JDM Lures All Rights Reserved.</p>
-    <nav>
-      <a href="../policy/policy.html">Refund Policy</a> |
-      <a href="../policy/policy.html">Terms of Service</a> |
-      <a href="../policy/policy.html">Privacy Policy</a>
-    </nav>
-  </footer>
 </section>
 
-<!-- JS -->
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2026 JDM Lures All Rights Reserved.</p>
+  <nav>
+    <a href="../policy/policy.html">Refund Policy</a> |
+    <a href="../policy/policy.html">Terms of Service</a> |
+    <a href="../policy/policy.html">Privacy Policy</a>
+  </nav>
+</footer>
+
+<!-- PayPal Buttons Script -->
+<script>
+  // Top Button
+  paypal.Buttons({
+    style: { layout: 'vertical', label: 'paypal' }, // verticalで安定
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{ amount: { value: '10' } }]
+      });
+    },
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(details) {
+        alert('Transaction completed by ' + details.payer.name.given_name);
+      });
+    }
+  }).render('#paypal-button-container-top');
+
+  // Bottom Button
+  paypal.Buttons({
+    style: { layout: 'vertical', label: 'paypal' },
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{ amount: { value: '10' } }]
+      });
+    },
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(details) {
+        alert('Transaction completed by ' + details.payer.name.given_name);
+      });
+    }
+  }).render('#paypal-button-container-bottom');
+</script>
+
 <script src="../js/main.js"></script>
 <script src="detail.js"></script>
 </body>

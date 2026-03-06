@@ -5,6 +5,7 @@
 
 * {
   font-family: Georgia, serif;
+  box-sizing: border-box;
 }
 
 html {
@@ -13,9 +14,8 @@ html {
 
 body {
   margin: 0;
-  font-family: Georgia, serif;
-  color: var(--green);
   background: #faf9f4;
+  color: var(--green);
   line-height: 1.6;
 }
 
@@ -24,34 +24,13 @@ a, a:visited, a:hover, a:active {
   text-decoration: none;
 }
 
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-/* ===== LOGO SECTION ===== */
-
-.logo-section {
-  margin: 0;       /* section の上下余白を消す */
-  padding: 0;
-  text-align: center;
-  line-height: 0;  /* inline 画像の余白を消す */
-  font-size: 0;    /* inline 画像の下の空白を消す */
-}
-
-.logo-section img {
-  display: inline-block;  /* block だとバナーが消えたようになる */
-  max-width: 100%;        /* 親幅に収まる */
-  height: auto;           /* 縦横比を維持 */
-}
-/* ===== TOP BAR ===== */
+/* ================= 共通ヘッダー ================= */
 .top-bar {
-  background-color: #154734; /* 緑のバー */
-  color: #ffffff;            /* 白文字 */
-  padding: 0;
+  background-color: var(--green);
+  color: #fff;
   text-align: center;
   /* border-bottom: 1px solid #ddd; */
+  padding: 0;
 }
 
 .top-inner {
@@ -59,6 +38,7 @@ a, a:visited, a:hover, a:active {
   justify-content: center;
   align-items: center;
   gap: 10px;
+  /* padding: 5px 0; */
 }
 
 .top-inner .flag {
@@ -71,16 +51,26 @@ a, a:visited, a:hover, a:active {
   margin-left: 8px;
   padding: 2px 6px;
   border-radius: 4px;
+  font-size: 14px;
 }
 
-/* ===== HERO ===== */
+/* ================= 共通ロゴ ================= */
+.logo-section img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ================= HERO（indexのみ） ================= */
 .hero {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  height: 450px; /* 統一サイズ */
+  height: 450px;
   max-width: 900px;
-  margin: 0 auto 20px auto;
+  /* margin: 20px auto; */
+  border-radius: 6px;
 }
 
 .hero-item {
@@ -105,55 +95,7 @@ a, a:visited, a:hover, a:active {
   display: block;
 }
 
-/* ===== FREE SHIPPING ===== */
-.free {
-  text-align: center;
-  margin: 20px 0;
-}
-
-/* ===== PAYMENT ICONS ===== */
-.payment-icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 11px;
-  flex-wrap: wrap;
-  padding: 20px 0;
-}
-
-.payment-icons img, .payment-icons svg {
-  height: 29px;
-  width: auto;
-  display: block;
-  flex-shrink: 0;
-}
-
-/* ===== NEWS ===== */
-.news ul {
-  list-style: none;
-  padding: 0;
-}
-
-.news li {
-  margin-bottom: 8px;
-}
-
-/* ===== CUSTOM SERVICE ===== */
-.custom-button {
-  display: inline-block;
-  padding: 12px 20px;
-  background: var(--green);
-  color: #fff;
-  border-radius: 4px;
-  margin-top: 10px;
-}
- 
-.custom-service-section img{
-    max-width: 100%;
-    height: auto;
-}
-
-/* ===== SALES HISTORY ===== */
+/* ================= カードスライダー ================= */
 .card-slider {
   display: flex;
   overflow-x: auto;
@@ -179,7 +121,6 @@ a, a:visited, a:hover, a:active {
 .card a {
   display: block;
   color: inherit;
-  text-decoration: none;
 }
 
 .card img {
@@ -197,35 +138,48 @@ a, a:visited, a:hover, a:active {
   font-weight: bold;
 }
 
-/* ===== REVIEW ===== */
-.section p {
-  margin-bottom: 10px;
+/* ================= 支払いロゴ ================= */
+.payment-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 11px;
+  flex-wrap: wrap;
+  padding: 20px 0;
 }
 
-/* ===== CONTACT & FOOTER ===== */
-.contact .footer {
+.payment-icons img, .payment-icons svg {
+  height: 29px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ================= フッター ================= */
+.footer {
   text-align: center;
   padding: 20px 0;
   font-size: 14px;
-  background-color: #f8f8f8;
-  margin-top: 20px;
+  opacity: 0.7;
+  border-top: 1px solid #ddd;
 }
 
-.contact nav a {
-  margin: 0 10px;
-  color: #333;
-  font-size: 12px;
+/* ================= 共通 container ================= */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-/* ===== MEDIA ===== */
+/* ================= MEDIA ================= */
 @media (max-width: 768px) {
   .card {
     min-width: 180px;
   }
 
   .top-inner {
-    /* flex-direction: column; */
     gap: 5px;
+    flex-wrap: wrap;
   }
 
   .hero {

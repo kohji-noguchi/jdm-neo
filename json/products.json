@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "title": "PACKAGE #1",
+    "price": 180,
+    "desc": "Sample description for Package 1",
+    "hero": "hero/package1-hero.jpg",
+    "heroCaption": "Package 1 Hero Image",
+    "images": [
+      {"src": "detail/package1-0.jpg", "caption": "Front View"},
+      {"src": "detail/package1-1.jpg", "caption": "Side View"},
+      {"src": "detail/package1-2.jpg", "caption": "Back View"}
+    ]
+  },
+  {
+    "id": 2,
+    "title": "PACKAGE #2",
+    "price": 200,
+    "desc": "Sample description for Package 2",
+    "hero": "hero/package2-hero.jpg",
+    "heroCaption": "Package 2 Hero Image",
+    "images": [
+      {"src": "detail/package2-0.jpg", "caption": "Front View"},
+      {"src": "detail/package2-1.jpg", "caption": "Side View"},
+      {"src": "detail/package2-2.jpg", "caption": "Back View"}
+    ]
+  },
+  {
+    "id": 3,
+    "title": "PACKAGE #3",
+    "price": 220,
+    "desc": "Sample description for Package 3",
+    "hero": "hero/package3-hero.jpg",
+    "heroCaption": "Package 3 Hero Image",
+    "images": []
+  }
+]

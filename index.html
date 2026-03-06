@@ -4,8 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JDMLures OFFICIAL</title>
+
+<!-- 共通CSS -->
 <link rel="stylesheet" href="style.css">
 
+<!-- favicon -->
 <link rel="apple-touch-icon" sizes="180x180" href="https://via.placeholder.com/180">
 <link rel="icon" type="image/png" sizes="32x32" href="https://via.placeholder.com/32">
 <link rel="icon" type="image/png" sizes="16x16" href="https://via.placeholder.com/16">
@@ -13,6 +16,7 @@
 </head>
 <body>
 
+<!-- ================= 共通ヘッダー ================= -->
 <div class="top-bar">
   <div class="top-inner">
     <img src="https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg" class="flag" alt="Japan Flag">
@@ -24,6 +28,7 @@
   <img src="img/index/logo.webp" alt="JDMLures Logo">
 </section>
 
+<!-- ================= HERO（スライド） ================= -->
 <section class="hero">
   <div id="hero-slide-1" class="hero-item">
     <img src="img/hero/package1-hero.webp" alt="Product 1">
@@ -42,6 +47,7 @@
 </div>
 
 <div class="payment-icons">
+  <!-- 支払いロゴ -->
   <svg viewBox="0 0 120 40" aria-label="PayPal">
     <g transform="translate(0,4)">
       <path fill="#003087" d="M18 4c6 0 10 4 9 9s-5 9-11 9h-4l-2 12H4l5-30h9z"/>
@@ -53,6 +59,18 @@
   </svg>
 
   <img src="img/index/visa.webp" alt="Visa">
+
+  <svg viewBox="0 0 48 32" aria-label="Mastercard">
+    <circle cx="18" cy="16" r="10" fill="#EB001B"></circle>
+    <circle cx="30" cy="16" r="10" fill="#F79E1B"></circle>
+    <path fill="#FF5F00" d="M24 6a10 10 0 000 20 10 10 0 000-20z"></path>
+  </svg>
+
+  <svg viewBox="0 0 60 38" aria-label="American Express">
+    <rect width="60" height="38" fill="#2E77BB"></rect>
+    <text x="30" y="16" font-size="9" fill="#ffffff" font-family="Arial" font-weight="bold" text-anchor="middle">AMERICAN</text>
+    <text x="30" y="28" font-size="9" fill="#ffffff" font-family="Arial" font-weight="bold" text-anchor="middle">EXPRESS</text>
+  </svg>
 </div>
 
 <section class="section">
@@ -70,7 +88,7 @@
   <div class="container">
     <h2>CUSTOM ORDER</h2>
     <p>Brand / Lure Type / Quantity : Negotiable</p>
-    <img src="img/index/menu.webp" alt="">
+    <a href="custom/custom.html" class="custom-button"><span></span></a>
   </div>
 </section>
 
@@ -108,21 +126,22 @@
   <div class="container">
     <h2>CONTACT</h2>
     <ul class="contact-list">
-      <li><a href="#" class="contact-icon instagram"></a></li>
+      <li class="instagram"><a href="#" class="contact-icon instagram"></a></li>
       <li><a href="#" class="contact-icon gmail"></a></li>
       <li><a href="#" class="contact-icon whatsapp"></a></li>
     </ul>
-
-    <div class="footer">
-      <p>© 2026 JDM Lures All Rights Reserved.</p>
-      <nav>
-        <a href="#">Refund Policy</a> |
-        <a href="#">Terms of Service</a> |
-        <a href="#">Privacy Policy</a>
-      </nav>
-    </div>
   </div>
 </section>
+
+<!-- ================= 共通フッター ================= -->
+<footer class="footer">
+  <p>© 2026 JDM Lures All Rights Reserved.</p>
+  <nav>
+    <a href="#">Refund Policy</a> |
+    <a href="#">Terms of Service</a> |
+    <a href="#">Privacy Policy</a>
+  </nav>
+</footer>
 
 <script src="js/main.js"></script>
 </body>
