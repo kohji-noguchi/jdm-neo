@@ -4,9 +4,10 @@
     "title": "PACKAGE #1",
     "price": 180,
     "desc": "Sample description for Package 1",
-    "status": "stock",
     "hero": "img/hero/package-1-hero.webp",
     "heroCaption": "Package 1 Hero Image",
+    "status": "stock",
+    "packageNumber": 1,
     "images": [
       {"src": "detail/package1-0.jpg", "caption": "Front View"},
       {"src": "detail/package1-1.jpg", "caption": "Side View"},
@@ -18,9 +19,10 @@
     "title": "PACKAGE #2",
     "price": 200,
     "desc": "Sample description for Package 2",
-    "status": "stock",
     "hero": "img/hero/package-2-hero.webp",
     "heroCaption": "Package 2 Hero Image",
+    "status": "stock",
+    "packageNumber": 2,
     "images": [
       {"src": "detail/package2-0.jpg", "caption": "Front View"},
       {"src": "detail/package2-1.jpg", "caption": "Side View"},
@@ -32,9 +34,10 @@
     "title": "PACKAGE #3",
     "price": 220,
     "desc": "Sample description for Package 3",
-    "status": "stock",
     "hero": "img/hero/package-3-hero.webp",
     "heroCaption": "Package 3 Hero Image",
+    "status": "stock",
+    "packageNumber": 3,
     "images": []
   }
 ]
