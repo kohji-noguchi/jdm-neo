@@ -3,41 +3,27 @@
     "id": 1,
     "title": "PACKAGE #1",
     "price": 180,
-    "desc": "Sample description for Package 1",
-    "hero": "img/hero/package-1-hero.webp",
-    "heroCaption": "Package 1 Hero Image",
+    "hero": "img/hero/package1-hero.webp",
     "status": "stock",
     "packageNumber": 1,
-    "images": [
-      {"src": "detail/package1-0.jpg", "caption": "Front View"},
-      {"src": "detail/package1-1.jpg", "caption": "Side View"},
-      {"src": "detail/package1-2.jpg", "caption": "Back View"}
-    ]
+    "images": ["img/detail/package1-0.jpg","img/detail/package1-1.jpg","img/detail/package1-2.jpg"]
   },
   {
     "id": 2,
     "title": "PACKAGE #2",
-    "price": 200,
-    "desc": "Sample description for Package 2",
-    "hero": "img/hero/package-2-hero.webp",
-    "heroCaption": "Package 2 Hero Image",
+    "price": 790,
+    "hero": "img/hero/package2-hero.webp",
     "status": "stock",
     "packageNumber": 2,
-    "images": [
-      {"src": "detail/package2-0.jpg", "caption": "Front View"},
-      {"src": "detail/package2-1.jpg", "caption": "Side View"},
-      {"src": "detail/package2-2.jpg", "caption": "Back View"}
-    ]
+    "images": ["img/detail/package2-0.jpg","img/detail/package2-1.jpg","img/detail/package2-2.jpg"]
   },
   {
     "id": 3,
     "title": "PACKAGE #3",
     "price": 220,
-    "desc": "Sample description for Package 3",
-    "hero": "img/hero/package-3-hero.webp",
-    "heroCaption": "Package 3 Hero Image",
+    "hero": "img/hero/package3-hero.webp",
     "status": "stock",
     "packageNumber": 3,
-    "images": []
+    "images": ["img/detail/package3-0.jpg","img/detail/package3-1.jpg"]
   }
 ]

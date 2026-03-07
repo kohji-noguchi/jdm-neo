@@ -14,24 +14,9 @@
 <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 
-<!-- 本番用　PayPal SDK -->
-<!-- <script src="https://www.paypal.com/sdk/js?client-id=ATPf9JYiBbX0M034sH87U2yChqPFo-30PhTPUhYgP3m4U_1AjV7tQ-MkbVCx2LoN2LBmD9vc5IsjIi1C&currency=USD&locale=en_US"></script> -->
-
-
-<!-- テスト用　PayPal SDK -->
+<!-- PayPal SDK -->
 <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD&locale=en_US"></script>
 
-<style>
-  /* 最小限でボタンが崩れないようにする */
-  .price-text {
-    font-size: 1.4rem;
-    font-weight: bold;
-    margin-bottom: 6px;
-  }
-  .paypal-wrapper {
-    display: block;
-  }
-</style>
 </head>
 
 <body>
@@ -51,12 +36,10 @@
 <!-- Detail Title & Top Price -->
 <section class="section">
   <div class="container">
-    <h2 id="detail-title">Sample Product</h2>
-
-    <p class="price-text">$0</p>
+    <h2 id="detail-title">Loading...</h2>
+    <p class="price-text" id="detail-price">$0</p>
     <div id="paypal-button-container-top" class="paypal-wrapper"></div>
-
-    <p id="detail-desc">This is a sample product description.</p>
+    <p id="detail-desc">Loading...</p>
   </div>
 </section>
 
@@ -69,33 +52,14 @@
 </section>
 
 <!-- Additional Shots -->
-<section class="section">
-  <div class="container">
-    <img id="detail-img-1" src="../img/detail/sample1.jpg" alt="Front Angle">
-    <p class="image-caption">Front Angle View</p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <img id="detail-img-2" src="../img/detail/sample2.jpg" alt="Side Angle">
-    <p class="image-caption">Side Angle View</p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <img id="detail-img-3" src="../img/detail/sample3.jpg" alt="Rear Angle">
-    <p class="image-caption">Rear Angle View</p>
-  </div>
+<section class="section" id="additional-images">
 </section>
 
 <!-- Payment Section Bottom -->
 <section class="section back-section">
   <div class="container">
-    <p class="price-text">$0</p>
+    <p class="price-text" id="detail-price-bottom">$0</p>
     <div id="paypal-button-container-bottom" class="paypal-wrapper"></div>
-
     <a href="../index.html" class="back-button">BACK</a>
   </div>
 </section>
@@ -110,11 +74,14 @@
   </nav>
 </footer>
 
-<!-- PayPal Buttons Script -->
+<!-- Detail JS -->
+<script src="detail.js"></script>
+
+<!-- HTML内PayPalボタン（消さない） -->
 <script>
   // Top Button
   paypal.Buttons({
-    style: { layout: 'vertical', label: 'paypal' }, // verticalで安定
+    style: { layout: 'vertical', label: 'paypal' }, 
     createOrder: function(data, actions) {
       return actions.order.create({
         purchase_units: [{ amount: { value: '10' } }]
@@ -143,7 +110,5 @@
   }).render('#paypal-button-container-bottom');
 </script>
 
-<script src="../js/main.js"></script>
-<script src="detail.js"></script>
 </body>
 </html>
