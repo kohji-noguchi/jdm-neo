@@ -8,8 +8,7 @@
     "images": [
       "img/detail/package1-0.webp",
       "img/detail/package1-1.webp",
-      "img/detail/package1-2.webp",
-      "img/detail/package1-1.webp"
+      "img/detail/package1-2.webp"
     ]
   },
   {
@@ -19,9 +18,9 @@
     "status": "stock",
     "hero": "img/hero/package2-hero.webp",
     "images": [
-      "img/detail/package2-0.jpg",
-      "img/detail/package2-1.jpg",
-      "img/detail/package2-2.jpg"
+      "img/detail/package2-0.webp",
+      "img/detail/package2-1.webp",
+      "img/detail/package2-2.webp"
     ]
   },
   {
@@ -31,8 +30,8 @@
     "status": "stock",
     "hero": "img/hero/package3-hero.webp",
     "images": [
-      "img/detail/package3-0.jpg",
-      "img/detail/package3-1.jpg"
+      "img/detail/package3-0.webp",
+      "img/detail/package3-1.webp"
     ]
   }
 ]

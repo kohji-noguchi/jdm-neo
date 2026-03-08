@@ -6,29 +6,23 @@ document.addEventListener("DOMContentLoaded", async function () {
   const intervalTime = 3000;
   let slideInterval;
 
-  // =====================
-  // Google Sheets WebApp URL
-  // =====================
-  const SHEETS_URL = "https://script.google.com/macros/s/AKfycbzhESrmL_SzKU4FtQsUr8WSMLYQv9waY--coBr2yHQzM2ixi14gXBy-bI8UC2iB3I0/exec";
+  const SHEETS_URL = "https://script.google.com/macros/s/AKfycbwKLuhCuIR-9IjRqprczReCEIEBE-7EMf6FXB-B7Fk9nF_b6sya8p5U_0O95d5QZzs/exec";
 
   try {
-    // 1. products.json と購入状態取得
-    const [productsRes, sheetsRes] = await Promise.all([
-      fetch('json/products.json'),
-      fetch(SHEETS_URL)
-    ]);
+    const res = await fetch("json/products.json");
+    const data = await res.json();
 
-    const products = await productsRes.json();
-    const sheetsData = await sheetsRes.json();
+    let purchasedIds = [];
+    try {
+      const sheetRes = await fetch(SHEETS_URL);
+      const sheetData = await sheetRes.json();
+      purchasedIds = sheetData.filter(p => p.purchased == 1).map(p => p.id);
+    } catch (err) {
+      console.error("Sheets GET error:", err);
+    }
 
-    // 購入済み ID 配列
-    const purchasedIds = sheetsData.filter(p => p.purchased == 1).map(p => p.id);
-
-    // =====================
-    // HEROスライド生成
-    // =====================
-    products.forEach((item, index) => {
-      if (purchasedIds.includes(item.id)) return; // 購入済みは非表示
+    data.forEach((item, index) => {
+      if (purchasedIds.includes(item.id)) return;
 
       const slide = document.createElement('div');
       slide.className = 'slide';
@@ -42,12 +36,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       const info = document.createElement('div');
       info.className = 'product-info';
-
       const p = document.createElement('p');
       p.className = 'package';
       p.textContent = item.title || "";
       info.appendChild(p);
-
       const price = document.createElement('span');
       price.className = 'price';
       price.textContent = `$ ${item.price || 0}`;
@@ -57,14 +49,12 @@ document.addEventListener("DOMContentLoaded", async function () {
         window.location.href = `detail.html?id=${item.id}`;
       });
 
-      info.style.cursor = "pointer";
       slide.appendChild(info);
-
       heroContainer.appendChild(slide);
       slides.push(slide);
     });
 
-    // COMING SOON スライド
+    // COMING SOON
     const comingSlide = document.createElement('div');
     comingSlide.className = 'slide coming';
     const btn = document.createElement('div');
@@ -80,6 +70,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       currentSlide = (currentSlide + 1) % slides.length;
       slides[currentSlide].classList.add('active');
     }
+
     slideInterval = setInterval(nextSlide, intervalTime);
 
     heroContainer.addEventListener('click', () => {
@@ -88,7 +79,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       slideInterval = setInterval(nextSlide, intervalTime);
     });
 
-    // スワイプ対応
     let startX = 0;
     heroContainer.addEventListener('touchstart', e => startX = e.touches[0].clientX);
     heroContainer.addEventListener('touchend', e => {
@@ -104,44 +94,11 @@ document.addEventListener("DOMContentLoaded", async function () {
       }
     });
 
-    // =====================
-    // CARD SLIDER
-    // =====================
-    const cardSlider = document.querySelector('.card-slider');
-    if (cardSlider) {
-      products.forEach(item => {
-        if (purchasedIds.includes(item.id)) return; // 購入済みカード非表示も可
-
-        const card = document.createElement('div');
-        card.className = 'card';
-
-        const a = document.createElement('a');
-        a.href = `detail.html?id=${item.id}`;
-
-        const img = document.createElement('img');
-        img.src = (item.images && item.images[0]) ? item.images[0] : "img/detail/placeholder.webp";
-        a.appendChild(img);
-
-        const h3 = document.createElement('h3');
-        h3.textContent = item.title || "";
-        a.appendChild(h3);
-
-        const p = document.createElement('p');
-        p.textContent = `$ ${item.price || 0}`;
-        a.appendChild(p);
-
-        card.appendChild(a);
-        cardSlider.appendChild(card);
-      });
-    }
-
   } catch (err) {
     console.error("MAIN JS ERROR:", err);
   }
 
-  // =====================
-  // 日本時間表示
-  // =====================
+  // 日本時間
   function updateJapanTime() {
     const now = new Date();
     const japan = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Tokyo" }));
@@ -150,5 +107,4 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
   setInterval(updateJapanTime, 1000);
   updateJapanTime();
-
 });

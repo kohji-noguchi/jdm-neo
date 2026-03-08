@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const params = new URLSearchParams(window.location.search);
   const id = parseInt(params.get("id"), 10) || 1;
 
-  const SHEETS_URL = "https://script.google.com/macros/s/AKfycbzhESrmL_SzKU4FtQsUr8WSMLYQv9waY--coBr2yHQzM2ixi14gXBy-bI8UC2iB3I0/exec";
+  const SHEETS_URL = "https://script.google.com/macros/s/AKfycbwKLuhCuIR-9IjRqprczReCEIEBE-7EMf6FXB-B7Fk9nF_b6sya8p5U_0O95d5QZzs/exec";
 
   try {
     const [productsRes, sheetsRes] = await Promise.all([
@@ -12,16 +12,14 @@ document.addEventListener("DOMContentLoaded", async function () {
     ]);
 
     const products = await productsRes.json();
-    const sheetsData = await sheetsRes.json();
+    const purchasedData = await sheetsRes.json();
 
-    const purchasedIds = sheetsData.filter(p => p.purchased == 1).map(p => p.id);
-
+    const purchasedIds = purchasedData.filter(p => p.purchased == 1).map(p => p.id);
     const product = products.find(p => p.id === id);
     if (!product) return;
 
     const isPurchased = purchasedIds.includes(product.id);
 
-    // HTML描画
     document.getElementById("detail-title").textContent = product.title;
     document.getElementById("detail-price").textContent = `$ ${product.price}`;
     document.getElementById("detail-price-bottom").textContent = `$ ${product.price}`;
@@ -39,9 +37,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       });
     }
 
-    // =====================
-    // PayPal ボタン描画
-    // =====================
     function renderPaypal(container) {
       const el = document.querySelector(container);
       el.innerHTML = "";
@@ -62,10 +57,9 @@ document.addEventListener("DOMContentLoaded", async function () {
           });
         },
         onApprove: async function (data, actions) {
-          return actions.order.capture().then(async function (details) {
-            alert("Transaction completed by " + details.payer.name.given_name);
+          return actions.order.capture().then(async function () {
+            alert("Transaction completed");
 
-            // Sheets に購入済み反映
             await fetch(SHEETS_URL, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
