@@ -1,99 +1,88 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
 
-const params = new URLSearchParams(window.location.search);
-const id = parseInt(params.get("id"),10) || 1;
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get("id"), 10) || 1;
 
-fetch("json/products.json")
+  const SHEETS_URL = "https://script.google.com/macros/s/AKfycbzhESrmL_SzKU4FtQsUr8WSMLYQv9waY--coBr2yHQzM2ixi14gXBy-bI8UC2iB3I0/exec";
 
-.then(res => res.json())
+  try {
+    const [productsRes, sheetsRes] = await Promise.all([
+      fetch("json/products.json"),
+      fetch(SHEETS_URL)
+    ]);
 
-.then(products => {
+    const products = await productsRes.json();
+    const sheetsData = await sheetsRes.json();
 
-const product = products.find(p => p.id === id);
+    const purchasedIds = sheetsData.filter(p => p.purchased == 1).map(p => p.id);
 
-if(!product) return;
+    const product = products.find(p => p.id === id);
+    if (!product) return;
 
+    const isPurchased = purchasedIds.includes(product.id);
 
-document.getElementById("detail-title").textContent = product.title;
+    // HTML描画
+    document.getElementById("detail-title").textContent = product.title;
+    document.getElementById("detail-price").textContent = `$ ${product.price}`;
+    document.getElementById("detail-price-bottom").textContent = `$ ${product.price}`;
+    document.getElementById("detail-hero-img").src = product.hero;
+    document.getElementById("hero-caption").textContent = product.title;
 
-document.getElementById("detail-price").textContent = "$ " + product.price;
+    const gallery = document.getElementById("additional-images");
+    gallery.innerHTML = "";
+    if (product.images) {
+      product.images.forEach(img => {
+        const image = document.createElement("img");
+        image.src = img;
+        image.className = "detail-shot";
+        gallery.appendChild(image);
+      });
+    }
 
-document.getElementById("detail-price-bottom").textContent = "$ " + product.price;
+    // =====================
+    // PayPal ボタン描画
+    // =====================
+    function renderPaypal(container) {
+      const el = document.querySelector(container);
+      el.innerHTML = "";
 
+      if (isPurchased) {
+        el.style.display = "none";
+        return;
+      }
 
-document.getElementById("detail-hero-img").src = product.hero;
+      paypal.Buttons({
+        style: { layout: 'vertical', label: 'paypal' },
+        createOrder: function (data, actions) {
+          return actions.order.create({
+            purchase_units: [{
+              description: product.title,
+              amount: { value: product.price.toString() }
+            }]
+          });
+        },
+        onApprove: async function (data, actions) {
+          return actions.order.capture().then(async function (details) {
+            alert("Transaction completed by " + details.payer.name.given_name);
 
-document.getElementById("hero-caption").textContent = product.title;
+            // Sheets に購入済み反映
+            await fetch(SHEETS_URL, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ id: product.id })
+            });
 
+            el.style.display = "none";
+          });
+        }
+      }).render(container);
+    }
 
-const gallery = document.getElementById("additional-images");
+    renderPaypal("#paypal-button-container-top");
+    renderPaypal("#paypal-button-container-bottom");
 
-gallery.innerHTML = "";
-
-if(product.images){
-
-product.images.forEach(img=>{
-
-const image = document.createElement("img");
-
-image.src = img;
-
-image.className = "detail-shot";
-
-gallery.appendChild(image);
-
-});
-
-}
-
-
-function renderPaypal(container){
-
-paypal.Buttons({
-
-style:{
-layout:'vertical',
-label:'paypal'
-},
-
-createOrder:function(data,actions){
-
-return actions.order.create({
-
-purchase_units:[{
-
-description:product.title,
-
-amount:{
-value:product.price.toString()
-}
-
-}]
-
-});
-
-},
-
-onApprove:function(data,actions){
-
-return actions.order.capture().then(function(details){
-
-alert("Transaction completed by " + details.payer.name.given_name);
-
-});
-
-}
-
-}).render(container);
-
-}
-
-
-renderPaypal("#paypal-button-container-top");
-renderPaypal("#paypal-button-container-bottom");
-
-})
-
-.catch(err=>console.error("JSON load error:",err));
+  } catch (err) {
+    console.error("DETAIL JS ERROR:", err);
+  }
 
 });

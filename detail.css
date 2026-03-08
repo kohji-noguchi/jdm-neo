@@ -12,11 +12,12 @@ section{
   margin: 12px;
 }
 
+
 #detail-price, #detail-price-bottom {
   color: var(--red);
   font-size: 40px;
   font-weight: 900;
-  margin: 0;
+  margin: 20px;
   width: 120px;
   text-align: center;
 }
