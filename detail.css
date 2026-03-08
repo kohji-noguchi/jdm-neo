@@ -1,110 +1,142 @@
-
-.logo-section{
-  padding: 0;
+:root {
+    --green: #154734;
+    --red: #dc1c13;
+    --lime: #32cd32;
 }
 
-section{
-  padding: 0 20px;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Georgia, serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #faf9f4;
+    color: var(--green);
+    line-height: 1.6;
+}
+
+/* ===== HEADER ===== */
+.top-bar {
+    background: var(--green);
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.top-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.flag {
+    width: 20px;
+    height: 14px;
+}
+
+/* ===== LOGO ===== */
+.logo-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.logo-section img {
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* ===== PRODUCT DETAIL ===== */
 #detail-title {
-  font-size: 28px;
-  margin: 12px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0 5px;
 }
 
-
-#detail-price, #detail-price-bottom {
-  color: var(--red);
-  font-size: 40px;
-  font-weight: 900;
-  margin: 20px;
-  width: 120px;
-  text-align: center;
+#detail-price-top,
+#detail-price-bottom {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--red);
+    margin-bottom: 10px;
 }
 
-#detail-desc {
-  color: #00457C;
+/* ===== HERO IMAGE ===== */
+#detail-hero-img {
+    display: block;
+    max-width: 900px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto 20px;
+    /* border-radius: 8px; */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-#hero-caption{
-  display:none;
+/* ===== ADDITIONAL IMAGES ===== */
+#additional-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-/* 価格＋PayPalボタン */
-.price-buy-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  margin-top: 10px;
+/* #additional-images img {
+    width: calc(25% - 10px);
+    max-width: 200px;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+} */
+
+/* ===== PAYPAL BUTTON PLACEHOLDER ===== */
+#paypal-button-container-top,
+#paypal-button-container-bottom {
+    text-align: center;
+    margin: 10px 0 20px;
+    padding: 15px;
+    background: #f0f0f0;
+    border-radius: 8px;
+    color: #555;
+    font-weight: bold;
 }
 
-.paypal-wrapper {
-  display: inline-block;
-  flex-shrink: 0;
+/* ===== BACK BUTTON ===== */
+.back {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-/* BACKボタン */
-.back-button {
-  display: inline-block;
-  padding: 12px 24px;
-  background: var(--green);
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-  margin-top: 10px;
+.back a {
+    text-decoration: none;
+    background: var(--green);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.2s;
 }
 
-/* HERO & 任意画像 */
-.hero img, .container img {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-  display: block;
+.back a:hover {
+    background: var(--lime);
+    color: #000;
 }
 
-#detail-hero-img{
-  margin-top: 20px;
-  width: 100%;
-}
-
-#additional-images{
-width: 100%;
-}
-#additional-images img{
-  width: 100%;
-  padding: 10px 0;
-}
-
-.image-caption {
-  font-size: 14px;
-  margin-top: 6px;
-  color: #333;
-}
-
-/* 下部セクション余白 */
-.back-section {
-  padding: 0 20px 60px 20px;
-}
-
-.caution {
-  padding: 10px 0;
-  font-size: 14px;
-  color: #00457C;
-}
-
-.back{
-  display: block;
-  text-align: center;
-  margin:60px 0;
-  border-radius: 20px;
-}
-
-.back a{
-  padding: 15px 30px;
-  background-color: #154734;
-  color: white;
-  text-decoration: none;
-  border-radius: 10px;
-  
+/* ===== FOOTER ===== */
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+    opacity: 0.7;
+    border-top: 1px solid #ddd;
 }

@@ -3,8 +3,10 @@
     "id": 1,
     "title": "PACKAGE #1",
     "price": 80,
-    "status": "stock",
     "hero": "img/hero/package1-hero.webp",
+    "detailURL": "img/detail/package1-0.webp",
+    "link": "detail/detail_001.html",
+    "thumbnail": "img/hero/package1-hero.webp",
     "images": [
       "img/detail/package1-0.webp",
       "img/detail/package1-1.webp",
@@ -15,23 +17,28 @@
     "id": 2,
     "title": "PACKAGE #2",
     "price": 790,
-    "status": "stock",
-    "hero": "img/hero/package2-hero.webp",
+    "hero": "https://picsum.photos/900/450?random=2",
+    "detailURL": "https://picsum.photos/400/300?random=2",
+    "link": "detail/detail_002.html",
+    "thumbnail": "https://picsum.photos/900/450?random=2",
     "images": [
-      "img/detail/package2-0.webp",
-      "img/detail/package2-1.webp",
-      "img/detail/package2-2.webp"
+      "https://picsum.photos/400/300?random=3",
+      "https://picsum.photos/400/300?random=4",
+      "https://picsum.photos/400/300?random=5"
     ]
   },
   {
     "id": 3,
     "title": "PACKAGE #3",
     "price": 220,
-    "status": "stock",
-    "hero": "img/hero/package3-hero.webp",
+    "hero": "https://picsum.photos/900/450?random=6",
+    "detailURL": "https://picsum.photos/400/300?random=6",
+    "link": "detail/detail_003.html",
+    "thumbnail": "https://picsum.photos/900/450?random=6",
     "images": [
-      "img/detail/package3-0.webp",
-      "img/detail/package3-1.webp"
+      "https://picsum.photos/400/300?random=7",
+      "https://picsum.photos/400/300?random=8",
+      "https://picsum.photos/400/300?random=9"
     ]
   }
 ]

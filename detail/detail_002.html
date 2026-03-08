@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JDMLures Detail</title>
+<title>PACKAGE #2 | JDMLures</title>
 <link rel="stylesheet" href="../style.css">
 <link rel="stylesheet" href="../detail.css">
-
-<!-- PayPal SDK -->
+<script src="../js/detail.js" defer></script>
 <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD&locale=en_US"></script>
 </head>
 <body>
@@ -25,26 +24,34 @@
 </section>
 
 <section>
-  <h2 id="detail-title">Loading...</h2>
-  <p id="detail-price">$0</p>
+  <h2 id="detail-title" data-id="2">PACKAGE #2</h2>
+  <p id="detail-price-top">$0</p>
+  <!-- PayPalボタンは手動で設置 -->
   <div id="paypal-button-container-top"></div>
 </section>
 
 <section>
-  <img id="detail-hero-img" alt="">
+  <!-- hero サムネ画像は JSON から自動反映 -->
+  <img id="detail-hero-img" src="" alt="PACKAGE #2">
 </section>
 
-<section id="additional-images" class="card-slider"></section>
+<section id="additional-images">
+  <!-- 手動で配置する画像 -->
+  <img src="../img/detail/package2-0.jpg" alt="PACKAGE #2">
+  <img src="../img/detail/package2-1.jpg" alt="PACKAGE #2">
+  <img src="../img/detail/package2-2.jpg" alt="PACKAGE #2">
+</section>
 
 <section>
   <p id="detail-price-bottom">$0</p>
+  <!-- PayPalボタンは手動で設置 -->
   <div id="paypal-button-container-bottom"></div>
+
   <div class="back">
     <a href="../index.html">BACK</a>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
   <p>© 2026 JDM Lures All Rights Reserved.</p>
   <nav>
@@ -54,6 +61,5 @@
   </nav>
 </footer>
 
-<script src="../js/detail.js"></script>
 </body>
 </html>

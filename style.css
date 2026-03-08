@@ -44,6 +44,7 @@ body {
 /* ===== LOGO ===== */
 .logo-section {
     text-align: center;
+    margin: 15px 0;
 }
 
 .logo-section img {
@@ -52,7 +53,7 @@ body {
     display: block;
 }
 
-/* ===== HERO ===== */
+/* ===== HERO SLIDER ===== */
 .hero {
     position: relative;
     width: 100%;
@@ -83,13 +84,13 @@ body {
     display: block;
 }
 
-/* ===== PRODUCT INFO ===== */
+/* ===== HERO 商品情報 ===== */
 .product-info {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(0,0,0,0.1);
+    background: rgba(0,0,0,0.2);
     padding: 25px 50px;
     border-radius: 10px;
     backdrop-filter: blur(6px);
@@ -105,6 +106,7 @@ body {
     color: white;
     font-size: 18px;
     margin: 0;
+    text-align: center;
 }
 
 .price {
@@ -115,36 +117,7 @@ body {
     letter-spacing: 1px;
 }
 
-/* ===== TRIANGLE FLAG ===== */
-.triangle {
-    position: absolute;
-    top: -1px;
-    left: 0;
-    width: 120px;
-    height: 120px;
-    background: var(--lime);
-    clip-path: polygon(0 0, 100% 0, 0 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    z-index: 5;
-}
-
-.triangle span {
-    color: white;
-    font-weight: bold;
-    font-size: 19px;
-    transform: rotate(-45deg);
-    position: absolute;
-    top: 28px;
-    left: -2px;
-}
-
-.slide.coming .triangle {
-    background: #999;
-}
-
+/* ===== COMING SOON ===== */
 .slide.coming .coming-soon-btn {
     position: absolute;
     top: 50%;
@@ -202,11 +175,6 @@ body {
     display: none;
 }
 
-/* .hide{
-    display: none;
-} */
-
-
 .card {
     flex-shrink: 0;
     scroll-snap-align: start;
@@ -218,7 +186,6 @@ body {
     min-width: 280px;
     max-width: 320px;
     transition: .3s;
-    display: none; /* ===== After 1st purchse = remove ===== */
 }
 
 .card:hover {
@@ -234,13 +201,30 @@ body {
     margin-bottom: 10px;
 }
 
+/* ===== ADDITIONAL IMAGES (DETAIL PAGE) ===== */
+#additional-images {
+    display: block; /* flex/gridの影響を受けない */
+    max-width: 600px;
+    margin: 20px auto 0 auto;
+}
+
+#additional-images img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 15px;
+}
+
 /* ===== FREE / EMS ===== */
 .free {
     margin-top: 20px;
+    text-align: center;
 }
 
 .ems {
-    margin: 10px 0;
+    margin: 10px auto;
+    display: block;
+    max-width: 48%;
 }
 
 /* ===== PAYMENT ICONS ===== */
@@ -310,7 +294,7 @@ body {
     height: 100%;
     background-image: url("img/index/menu.webp");
     background-size: cover;
-   background-position: 15% 0;
+    background-position: 15% 0;
     z-index: 0;
     transition: transform 0.3s ease;
 }
@@ -329,15 +313,15 @@ body {
     transform: scale(1.05);
 }
 
+/* ===== CONTACT ICONS ===== */
 .contact-list {
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 15px;
     padding: 0;
-    margin: 0;
-    list-style: none;
     margin-top: 30px;
+    list-style: none;
 }
 
 .contact-icon {
@@ -350,7 +334,6 @@ body {
     background-repeat: no-repeat;
     background-position: center;
 }
-
 
 .gmail {
     background-image: url(https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png);
