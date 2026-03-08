@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "PACKAGE #1",
+    "price": 80,
+    "status": "stock",
+    "hero": "img/hero/package1-hero.webp",
+    "images": [
+      "img/detail/package1-0.webp",
+      "img/detail/package1-1.webp",
+      "img/detail/package1-2.webp",
+      "img/detail/package1-1.webp"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "PACKAGE #2",
+    "price": 790,
+    "status": "stock",
+    "hero": "img/hero/package2-hero.webp",
+    "images": [
+      "img/detail/package2-0.jpg",
+      "img/detail/package2-1.jpg",
+      "img/detail/package2-2.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "PACKAGE #3",
+    "price": 220,
+    "status": "stock",
+    "hero": "img/hero/package3-hero.webp",
+    "images": [
+      "img/detail/package3-0.jpg",
+      "img/detail/package3-1.jpg"
+    ]
+  }
+]
