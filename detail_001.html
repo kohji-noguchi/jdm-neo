@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PACKAGE #1 | JDMLures</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../detail.css">
+<script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD&locale=en_US"></script>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="top-bar">
+  <div class="top-inner">
+    <span id="japan-time">00:00:00</span>
+  </div>
+</div>
+
+<section class="logo-section">
+  <img src="../img/index/logo.webp" alt="JDMLures Logo">
+</section>
+
+<section>
+  <h2 id="detail-title">PACKAGE #1</h2>
+  <!-- 価格は JSON 連動 -->
+  <p id="detail-price-top">$80</p>
+  <div id="paypal-button-container-top"></div>
+</section>
+
+<section>
+  <!-- トップサムネ：手動パス -->
+  <img id="detail-hero-img" src="../img/hero/package2-hero.webp" alt="PACKAGE #1">
+</section>
+
+<section id="additional-images">
+  <!-- 下段画像：縦にシンプルに並べる -->
+  <img src="https://picsum.photos/400/300?random=1" alt="Image 1">
+  <img src="https://picsum.photos/400/300?random=2" alt="Image 2">
+  <img src="https://picsum.photos/400/300?random=3" alt="Image 3">
+  <img src="https://picsum.photos/400/300?random=4" alt="Image 4">
+</section>
+
+<section>
+  <!-- 下段価格と仮PayPalボタン -->
+  <p id="detail-price-bottom">$80</p>
+  <div id="paypal-button-container-bottom"></div>
+  <div class="back">
+    <a href="../index.html">BACK</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>© 2026 JDM Lures All Rights Reserved.</p>
+  <nav>
+    <a href="#">Refund Policy</a> |
+    <a href="#">Terms of Service</a> |
+    <a href="#">Privacy Policy</a>
+  </nav>
+</footer>
+
+<script>
+  // 日本時間
+  function updateJapanTime(){
+    const now = new Date();
+    const japan = new Date(now.toLocaleString("en-US",{timeZone:"Asia/Tokyo"}));
+    const time = document.getElementById("japan-time");
+    if(time) time.innerText = japan.toLocaleTimeString();
+  }
+  setInterval(updateJapanTime, 1000);
+  updateJapanTime();
+
+  // PayPal 仮ボタン（上と下）
+  if(window.paypal){
+    ["paypal-button-container-top","paypal-button-container-bottom"].forEach(id=>{
+      paypal.Buttons({
+        createOrder: (data, actions) => actions.order.create({
+          purchase_units: [{ amount: { value: 80 } }]
+        }),
+        onApprove: (data, actions) => actions.order.capture()
+          .then(details => alert('Transaction completed by ' + details.payer.name.given_name))
+      }).render("#"+id);
+    });
+  }
+</script>
+
+</body>
+</html>
