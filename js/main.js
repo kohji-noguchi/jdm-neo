@@ -25,7 +25,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // ===== HERO SLIDER =====
       const heroData = data.slice(0,3);
-      heroData.push({ hero: "dummy", title: "COMING SOON" });
+      // ダミー「COMING SOON」を改行入りに変更
+      heroData.push({ hero: "dummy", title: "FIRST COME FIRST SERVED\nLIMITED DROP" });
 
       heroData.forEach((item, index) => {
         const slide = document.createElement('div');
@@ -33,14 +34,15 @@ document.addEventListener("DOMContentLoaded", function() {
         if(index === 0) slide.classList.add('active');
 
         if(item.hero === "dummy"){
-          slide.style.backgroundColor = "#fff";
-          slide.style.color = "red";
-          slide.style.display = "flex";
-          slide.style.justifyContent = "center";
-          slide.style.alignItems = "center";
-          slide.style.fontSize = "28px";
-          slide.style.fontWeight = "bold";
-          slide.textContent = item.title;
+          // CSSに任せてテキストだけHTMLで改行を入れる
+          const dummyDiv = document.createElement('div');
+          dummyDiv.className = 'dummy-slide';
+          const dummyText = document.createElement('div');
+          dummyText.className = 'dummy-text';
+          // 改行反映
+          dummyText.innerHTML = item.title.replace(/\n/g, "<br>");
+          dummyDiv.appendChild(dummyText);
+          slide.appendChild(dummyDiv);
         } else {
           const img = document.createElement('img');
           img.src = item.hero;

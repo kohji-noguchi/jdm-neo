@@ -19,7 +19,7 @@
   {
     "id": 2,
     "title": "PACKAGE #2",
-    "price": 790,
+    "price": 180,
     "hero": "../img/detail/package1-2.webp",
     "thumbnail": "https://picsum.photos/400/300?random=2",
     "link": "detail/detail_002.html",
@@ -28,9 +28,9 @@
       "../img/detail/package1-2.webp",
       "https://picsum.photos/400/300?random=5"
     ],
-    "soldDate": "2026-02-25",
-    "listedDate": "2026-02-20",
-    "shippedTo": "New York",
+    "soldDate": "2026-03-09",
+    "listedDate": "2026-03-09",
+    "shippedTo": "Sample",
     "flag": "US"
   },
   {

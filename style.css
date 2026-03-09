@@ -96,8 +96,8 @@ body {
     transform:translate(-50%,-50%);
     text-align:center;
     color:#ff0000;
-    font-weight:300;
-    font-size:16px;
+    font-weight:400;
+    font-size:20px;
     letter-spacing:3px;
     line-height:1.8;
 }
@@ -203,7 +203,7 @@ body {
     overflow-x: auto;
     gap: 20px;
     padding: 10px 0;
-    margin: 0 20px;
+    /* margin: 0 20px; */
     scroll-snap-type: x mandatory;
 }
 
@@ -220,7 +220,7 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     text-align: center;
     min-width: 280px;
-    max-width: 320px;
+    max-width: 280px;
     transition: .3s;
 }
 
