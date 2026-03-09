@@ -44,7 +44,7 @@ body {
 /* ===== LOGO ===== */
 .logo-section {
     text-align: center;
-    margin: 15px 0;
+    /* margin: 15px 0; */
 }
 
 .logo-section img {
@@ -84,6 +84,36 @@ body {
     display: block;
 }
 
+/* ===== ダミースライド（中央 赤 太字） ===== */
+
+.dummy-slide{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#faf9f4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.dummy-text{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    color:#ff0000;
+    font-weight:300;
+    font-size:16px;
+    letter-spacing:3px;
+    line-height:1.8;
+}
+
+.dummy-text div{
+    color:#ff0000;
+    font-weight:900;
+}
+
 /* ===== HERO 商品情報 ===== */
 .product-info {
     position: absolute;
@@ -100,6 +130,12 @@ body {
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    text-decoration: none;
+
+}
+
+p.buy-now{
+    color: white;
 }
 
 .package {
@@ -201,11 +237,11 @@ body {
     margin-bottom: 10px;
 }
 
-/* ===== ADDITIONAL IMAGES (DETAIL PAGE) ===== */
+/* ===== ADDITIONAL IMAGES ===== */
 #additional-images {
-    display: block; /* flex/gridの影響を受けない */
+    display: block;
     max-width: 600px;
-    margin: 20px auto 0 auto;
+    margin: 20px;
 }
 
 #additional-images img {
@@ -222,7 +258,7 @@ body {
 }
 
 .ems {
-    margin: 10px auto;
+    margin: 20px auto;
     display: block;
     max-width: 48%;
 }

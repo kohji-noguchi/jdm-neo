@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function() {
 
   const heroContainer = document.querySelector('.hero');
   const cardSlider = document.querySelector('.card-slider');
@@ -7,38 +7,70 @@ document.addEventListener("DOMContentLoaded", function(){
   const intervalTime = 5000;
   let slideInterval;
 
+  // ===== JAPAN TIME =====
+  function updateJapanTime(){
+    const now = new Date();
+    const japan = new Date(now.toLocaleString("en-US",{timeZone:"Asia/Tokyo"}));
+    const time = document.getElementById("japan-time");
+    if(time) time.innerText = japan.toLocaleTimeString();
+  }
+  setInterval(updateJapanTime, 1000);
+  updateJapanTime();
+
+  // ===== FETCH JSON =====
   fetch('json/products.json')
     .then(res => res.json())
     .then(data => {
-
       if(!data || !data.length) return;
 
       // ===== HERO SLIDER =====
-      data.forEach((item, index) => {
+      const heroData = data.slice(0,3); // 先頭3枚
+      heroData.push(data.find(item => item.hero === "dummy")); // ダミースライド追加
+
+      heroData.forEach((item, index) => {
         const slide = document.createElement('div');
         slide.className = 'slide';
         if(index === 0) slide.classList.add('active');
 
-        const img = document.createElement('img');
-        img.src = item.hero;
-        img.alt = item.title;
-        slide.appendChild(img);
+        if(item.hero === "dummy"){
+          // ダミースライド生成（背景白・赤文字）
+          slide.style.backgroundColor = "#fff";
+          slide.style.color = "red";
+          slide.style.display = "flex";
+          slide.style.justifyContent = "center";
+          slide.style.alignItems = "center";
+          slide.style.fontSize = "28px";
+          slide.style.fontWeight = "bold";
+          slide.textContent = item.title;
+        } else {
+          const img = document.createElement('img');
+          img.src = item.hero;
+          img.alt = item.title;
+          slide.appendChild(img);
 
-        const info = document.createElement('a');
-        info.className = 'product-info';
-        info.href = item.link;
+          const info = document.createElement('a');
+          info.className = 'product-info';
+          info.href = item.link;
 
-        const p = document.createElement('p');
-        p.className = 'package';
-        p.textContent = item.title;
-        info.appendChild(p);
+          const pTitle = document.createElement('p');
+          pTitle.className = 'package';
+          pTitle.textContent = item.title;
+          pTitle.style.textAlign = "center";
+          info.appendChild(pTitle);
 
-        const price = document.createElement('span');
-        price.className = 'price';
-        price.textContent = `$ ${item.price}`;
-        info.appendChild(price);
+          const price = document.createElement('span');
+          price.className = 'price';
+          price.textContent = `$ ${item.price}`;
+          info.appendChild(price);
 
-        slide.appendChild(info);
+          const buyBtn = document.createElement('button');
+          buyBtn.className = 'buy-now';
+          buyBtn.textContent = 'BUY NOW';
+          info.appendChild(buyBtn);
+
+          slide.appendChild(info);
+        }
+
         heroContainer.appendChild(slide);
         slides.push(slide);
       });
@@ -75,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function(){
         }
       });
 
-      // ===== CARD SLIDER =====
+      // ===== CARD SLIDER は既存通り =====
       if(cardSlider){
         data.forEach(item => {
           const card = document.createElement('div');
@@ -85,16 +117,31 @@ document.addEventListener("DOMContentLoaded", function(){
           a.href = item.link;
 
           const img = document.createElement('img');
-          img.src = item.detailURL; // detailトップサムネを使用
+          img.src = item.thumbnail;
           a.appendChild(img);
 
           const h3 = document.createElement('h3');
           h3.textContent = item.title;
+          h3.style.textAlign = "left";
           a.appendChild(h3);
 
-          const p = document.createElement('p');
-          p.textContent = `$ ${item.price}`;
-          a.appendChild(p);
+          const sold = document.createElement('p');
+          sold.textContent = `✅ Sold: ${item.soldDate}`;
+          sold.style.fontSize = "14px";
+          sold.style.textAlign = "left";
+          a.appendChild(sold);
+
+          const listed = document.createElement('p');
+          listed.textContent = `🏷️ Listed: ${item.listedDate}`;
+          listed.style.fontSize = "14px";
+          listed.style.textAlign = "left";
+          a.appendChild(listed);
+
+          const shipped = document.createElement('p');
+          shipped.innerHTML = `✈️ Shipped to <img src="https://flagcdn.com/12x9/${item.flag.toLowerCase()}.png" style="vertical-align:middle;margin:0 4px;">${item.shippedTo}`;
+          shipped.style.fontSize = "14px";
+          shipped.style.textAlign = "left";
+          a.appendChild(shipped);
 
           card.appendChild(a);
           cardSlider.appendChild(card);
@@ -103,13 +150,4 @@ document.addEventListener("DOMContentLoaded", function(){
 
     }).catch(err => console.error("JSON ERROR:", err));
 
-  // ===== JAPAN TIME =====
-  function updateJapanTime(){
-    const now = new Date();
-    const japan = new Date(now.toLocaleString("en-US",{timeZone:"Asia/Tokyo"}));
-    const time = document.getElementById("japan-time");
-    if(time) time.innerText = japan.toLocaleTimeString();
-  }
-  setInterval(updateJapanTime, 1000);
-  updateJapanTime();
 });

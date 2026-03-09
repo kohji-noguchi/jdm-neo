@@ -1,49 +1,97 @@
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function() {
 
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("id") || 1; // detail_001.html?id=1 のように渡す
+  const VERSION = "20260309";
 
-  fetch("../json/products.json")
-    .then(res => res.json())
-    .then(data => {
-      const product = data.find(p => p.id == id);
-      if(!product) return;
+  function updateJapanTime() {
 
-      // タイトル
-      const title = document.getElementById("detail-title");
-      if(title) title.textContent = product.title;
-
-      // 価格
-      const priceTop = document.getElementById("detail-price-top");
-      const priceBottom = document.getElementById("detail-price-bottom");
-      if(priceTop) priceTop.textContent = `$${product.price}`;
-      if(priceBottom) priceBottom.textContent = `$${product.price}`;
-
-      // トップサムネ画像（hero）
-      const heroImg = document.getElementById("detail-hero-img");
-      if(heroImg) heroImg.src = product.hero || product.detailURL;
-
-      // 追加画像
-      const additional = document.getElementById("additional-images");
-      if(additional){
-        additional.innerHTML = "";
-        product.images.forEach(url=>{
-          const img = document.createElement("img");
-          img.src = url;
-          img.alt = product.title;
-          additional.appendChild(img);
-        });
-      }
-    })
-    .catch(err => console.error("JSON ERROR:", err));
-
-  // 日本時間
-  function updateJapanTime(){
     const now = new Date();
-    const japan = new Date(now.toLocaleString("en-US",{timeZone:"Asia/Tokyo"}));
+
+    const japan = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Tokyo" }));
+
     const time = document.getElementById("japan-time");
-    if(time) time.innerText = japan.toLocaleTimeString();
+
+    if (time) time.innerText = japan.toLocaleTimeString();
+
   }
+
   setInterval(updateJapanTime, 1000);
+
   updateJapanTime();
+
+  const heroImg = document.getElementById("detail-hero-img");
+
+  if(heroImg){
+
+    heroImg.src = heroImg.src + "?v=" + VERSION;
+
+  }
+
+  const additionalImages = document.getElementById("additional-images");
+
+  if (additionalImages) {
+
+    const imageUrls = [
+
+      "https://picsum.photos/400/300?random=1",
+
+      "https://picsum.photos/400/300?random=2",
+
+      "https://picsum.photos/400/300?random=3",
+
+      "https://picsum.photos/400/300?random=4"
+
+    ];
+
+    additionalImages.innerHTML = "";
+
+    imageUrls.forEach(function(url, index) {
+
+      const img = document.createElement("img");
+
+      img.src = url + "&v=" + VERSION;
+
+      img.alt = `Image ${index + 1}`;
+
+      img.style.display = "block";
+
+      img.style.marginBottom = "10px";
+
+      additionalImages.appendChild(img);
+
+    });
+
+  }
+
+  if (window.paypal) {
+
+    ["paypal-button-container-top", "paypal-button-container-bottom"].forEach(function(id) {
+
+      paypal.Buttons({
+
+        createOrder: function(data, actions) {
+
+          return actions.order.create({
+
+            purchase_units: [{ amount: { value: "80" } }]
+
+          });
+
+        },
+
+        onApprove: function(data, actions) {
+
+          return actions.order.capture().then(function(details) {
+
+            alert('Transaction completed by ' + details.payer.name.given_name);
+
+          });
+
+        }
+
+      }).render("#" + id);
+
+    });
+
+  }
+
 });

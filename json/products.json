@@ -4,41 +4,63 @@
     "title": "PACKAGE #1",
     "price": 80,
     "hero": "img/hero/package1-hero.webp",
-    "detailURL": "img/detail/package1-0.webp",
+    "thumbnail": "img/detail/package1-0.webp",
     "link": "detail/detail_001.html",
-    "thumbnail": "img/hero/package1-hero.webp",
     "images": [
       "img/detail/package1-0.webp",
       "img/detail/package1-1.webp",
       "img/detail/package1-2.webp"
-    ]
+    ],
+    "soldDate": "2026-03-08",
+    "listedDate": "2026-03-01",
+    "shippedTo": "Tokyo",
+    "flag": "JP"
   },
   {
     "id": 2,
     "title": "PACKAGE #2",
     "price": 790,
     "hero": "https://picsum.photos/900/450?random=2",
-    "detailURL": "https://picsum.photos/400/300?random=2",
+    "thumbnail": "https://picsum.photos/400/300?random=2",
     "link": "detail/detail_002.html",
-    "thumbnail": "https://picsum.photos/900/450?random=2",
     "images": [
       "https://picsum.photos/400/300?random=3",
       "https://picsum.photos/400/300?random=4",
       "https://picsum.photos/400/300?random=5"
-    ]
+    ],
+    "soldDate": "2026-02-25",
+    "listedDate": "2026-02-20",
+    "shippedTo": "New York",
+    "flag": "US"
   },
   {
     "id": 3,
     "title": "PACKAGE #3",
     "price": 220,
     "hero": "https://picsum.photos/900/450?random=6",
-    "detailURL": "https://picsum.photos/400/300?random=6",
+    "thumbnail": "https://picsum.photos/400/300?random=6",
     "link": "detail/detail_003.html",
-    "thumbnail": "https://picsum.photos/900/450?random=6",
     "images": [
       "https://picsum.photos/400/300?random=7",
       "https://picsum.photos/400/300?random=8",
       "https://picsum.photos/400/300?random=9"
-    ]
+    ],
+    "soldDate": "2026-02-28",
+    "listedDate": "2026-02-22",
+    "shippedTo": "London",
+    "flag": "GB"
+  },
+  {
+    "id": 999,
+    "title": "COMING SOON",
+    "price": 0,
+    "hero": "dummy",
+    "thumbnail": "",
+    "link": "#",
+    "images": [],
+    "soldDate": "",
+    "listedDate": "",
+    "shippedTo": "",
+    "flag": ""
   }
 ]
