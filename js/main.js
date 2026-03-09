@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // ===== HERO SLIDER =====
       const heroData = data.slice(0,3); // 先頭3枚
-      heroData.push(data.find(item => item.hero === "dummy")); // ダミースライド追加
+      heroData.push({ hero: "dummy", title: "COMING SOON" }); // ダミースライド追加
 
       heroData.forEach((item, index) => {
         const slide = document.createElement('div');
@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function() {
         if(index === 0) slide.classList.add('active');
 
         if(item.hero === "dummy"){
-          // ダミースライド生成（背景白・赤文字）
           slide.style.backgroundColor = "#fff";
           slide.style.color = "red";
           slide.style.display = "flex";
@@ -84,14 +83,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
       slideInterval = setInterval(nextSlide, intervalTime);
 
-      // クリックで次スライド
       heroContainer.addEventListener('click', () => {
         clearInterval(slideInterval);
         nextSlide();
         slideInterval = setInterval(nextSlide, intervalTime);
       });
 
-      // タッチスワイプ
       let startX = 0;
       heroContainer.addEventListener('touchstart', e => startX = e.touches[0].clientX);
       heroContainer.addEventListener('touchend', e => {
@@ -107,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       });
 
-      // ===== CARD SLIDER は既存通り =====
+      // ===== CARD SLIDER =====
       if(cardSlider){
         data.forEach(item => {
           const card = document.createElement('div');
@@ -118,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
           const img = document.createElement('img');
           img.src = item.thumbnail;
+          img.className = "card-thumbnail";
           a.appendChild(img);
 
           const h3 = document.createElement('h3');
@@ -138,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function() {
           a.appendChild(listed);
 
           const shipped = document.createElement('p');
-          shipped.innerHTML = `✈️ Shipped to <img src="https://flagcdn.com/12x9/${item.flag.toLowerCase()}.png" style="vertical-align:middle;margin:0 4px;">${item.shippedTo}`;
+          shipped.innerHTML = `✈️ Shipped to <img class="flag-icon" src="https://flagcdn.com/24x18/${item.flag.toLowerCase()}.png" style="margin:0 4px;">${item.shippedTo}`;
           shipped.style.fontSize = "14px";
           shipped.style.textAlign = "left";
           a.appendChild(shipped);
