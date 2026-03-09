@@ -61,10 +61,12 @@ a .buy-now{
     margin: 0;
 }
 
-.logo-section img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+section .logo-section {
+margin: 0;
+}
+
+.logo-section{
+    margin: 0;
 }
 
 /* ===== PRODUCT DETAIL ===== */
@@ -140,10 +142,10 @@ a .buy-now{
     transition: 0.2s;
 }
 
-.back a:hover {
+/* .back a:hover {
     background: var(--lime);
     color: #000;
-}
+} */
 /* ===== CONTACT ICONS ===== */
 .contact-list {
     display: flex;

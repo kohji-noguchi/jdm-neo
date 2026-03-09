@@ -146,11 +146,10 @@ body {
     padding: 6px 18px;
     font-size: 14px;
     font-weight: bold;
-    background-color: white;
-    color: red;
+    color: white;
     border: none;
     border-radius: 4px;
-    cursor: pointer;
+    background: none;
 }
 
 /* ===== COMING SOON ===== */
@@ -204,6 +203,7 @@ body {
     overflow-x: auto;
     gap: 20px;
     padding: 10px 0;
+    margin: 0 20px;
     scroll-snap-type: x mandatory;
 }
 

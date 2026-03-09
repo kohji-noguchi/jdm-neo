@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", function() {
       if(!data || !data.length) return;
 
       // ===== HERO SLIDER =====
-      const heroData = data.slice(0,3); // 先頭3枚
-      heroData.push({ hero: "dummy", title: "COMING SOON" }); // ダミースライド追加
+      const heroData = data.slice(0,3);
+      heroData.push({ hero: "dummy", title: "COMING SOON" });
 
       heroData.forEach((item, index) => {
         const slide = document.createElement('div');
@@ -54,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function() {
           const pTitle = document.createElement('p');
           pTitle.className = 'package';
           pTitle.textContent = item.title;
-          pTitle.style.textAlign = "center";
           info.appendChild(pTitle);
 
           const price = document.createElement('span');
@@ -120,25 +119,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
           const h3 = document.createElement('h3');
           h3.textContent = item.title;
-          h3.style.textAlign = "left";
           a.appendChild(h3);
 
           const sold = document.createElement('p');
           sold.textContent = `✅ Sold: ${item.soldDate}`;
-          sold.style.fontSize = "14px";
-          sold.style.textAlign = "left";
           a.appendChild(sold);
 
           const listed = document.createElement('p');
           listed.textContent = `🏷️ Listed: ${item.listedDate}`;
-          listed.style.fontSize = "14px";
-          listed.style.textAlign = "left";
           a.appendChild(listed);
 
           const shipped = document.createElement('p');
-          shipped.innerHTML = `✈️ Shipped to <img class="flag-icon" src="https://flagcdn.com/24x18/${item.flag.toLowerCase()}.png" style="margin:0 4px;">${item.shippedTo}`;
-          shipped.style.fontSize = "14px";
-          shipped.style.textAlign = "left";
+          shipped.innerHTML = `✈️ Shipped to <img class="flag-icon" src="https://flagcdn.com/24x18/${item.flag.toLowerCase()}.png">${item.shippedTo}`;
           a.appendChild(shipped);
 
           card.appendChild(a);

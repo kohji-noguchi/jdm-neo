@@ -14,39 +14,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // ===== HERO IMAGE =====
   const heroImg = document.getElementById("detail-hero-img");
-  if(heroImg){
-    heroImg.src = heroImg.src + "?v=" + VERSION;
-  }
-
-  // ===== ADDITIONAL IMAGES =====
-  const additionalImages = document.getElementById("additional-images");
-  if (additionalImages) {
-    const imageUrls = [
-      "https://picsum.photos/400/300?random=1",
-      "https://picsum.photos/400/300?random=2",
-      "https://picsum.photos/400/300?random=3",
-      "https://picsum.photos/400/300?random=4"
-    ];
-    additionalImages.innerHTML = "";
-    imageUrls.forEach(function(url, index) {
-      const img = document.createElement("img");
-      img.src = url + "&v=" + VERSION;
-      img.alt = `Image ${index + 1}`;
-      img.style.display = "block";
-      img.style.marginBottom = "10px";
-      additionalImages.appendChild(img);
-    });
-  }
-
-  // ===== 価格反映 =====
-  const priceTop = document.getElementById("detail-price-top");
-  const priceBottom = document.getElementById("detail-price-bottom");
-
-  // detail_001.html の場合 id=1 などファイル名から自動判定
+  
+  // detailページのID判定
   let id = null;
   const match = window.location.pathname.match(/detail_(\d+)\.html$/);
   if(match) id = parseInt(match[1]);
 
+  // ===== FETCH JSON =====
   if(id !== null){
     fetch("../json/products.json")
       .then(res => res.json())
@@ -55,9 +29,31 @@ document.addEventListener("DOMContentLoaded", function() {
         const product = data.find(item => item.id === id);
         if(!product) return;
 
-        // JSONの価格を反映（PayPalボタンは変更しない）
+        // 価格反映
+        const priceTop = document.getElementById("detail-price-top");
+        const priceBottom = document.getElementById("detail-price-bottom");
         if(priceTop) priceTop.textContent = `$${product.price}`;
         if(priceBottom) priceBottom.textContent = `$${product.price}`;
+
+        // HERO IMAGE 反映
+        if(heroImg && product.hero && product.hero !== "dummy"){
+          heroImg.src = product.hero + "?v=" + VERSION;
+        }
+
+        // ===== ADDITIONAL IMAGES =====
+        const additionalImages = document.getElementById("additional-images");
+        if(additionalImages && product.images && product.images.length){
+          additionalImages.innerHTML = "";
+          product.images.forEach((imgPath, index) => {
+            const img = document.createElement("img");
+            img.src = imgPath + "?v=" + VERSION;
+            img.alt = `Image ${index + 1}`;
+            img.style.display = "block";
+            img.style.marginBottom = "10px";
+            additionalImages.appendChild(img);
+          });
+        }
+
       })
       .catch(err => console.error("detail.js JSON ERROR:", err));
   } else {
