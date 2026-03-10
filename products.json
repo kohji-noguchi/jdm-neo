@@ -1,0 +1,61 @@
+[
+  {
+    "id": 1,
+    "title": "PACKAGE #1",
+    "price": 80,
+    "hero": "img/hero/package1-hero.webp",
+    "thumbnail": "img/detail/package1-0.webp",
+    "link": "detail/detail_001.html",
+    "images": [
+      "img/detail/package1-0.webp",
+      "img/detail/package1-1.webp",
+      "img/detail/package1-2.webp"
+    ],
+    "soldDate": "2026-03-08",
+    "listedDate": "2026-03-01",
+    "shippedTo": "Tokyo",
+    "flag": "JP"
+  },
+  {
+    "id": 2,
+    "title": "PACKAGE #2",
+    "price": 180,
+    "hero": "detail/img/002/IMG_1828.png",
+    "thumbnail": "",
+    "link": "detail/detail_002.html",
+    "soldDate": "2026-03-09",
+    "listedDate": "2026-03-09",
+    "shippedTo": "Sample",
+    "flag": "US"
+  },
+  {
+    "id": 3,
+    "title": "PACKAGE #3",
+    "price": 220,
+    "hero": "https://picsum.photos/900/450?random=6",
+    "thumbnail": "https://picsum.photos/400/300?random=6",
+    "link": "detail/detail_003.html",
+    "images": [
+      "https://picsum.photos/400/300?random=7",
+      "https://picsum.photos/400/300?random=8",
+      "https://picsum.photos/400/300?random=9"
+    ],
+    "soldDate": "2026-02-28",
+    "listedDate": "2026-02-22",
+    "shippedTo": "London",
+    "flag": "GB"
+  },
+  {
+    "id": 999,
+    "title": "COMING SOON",
+    "price": 0,
+    "hero": "dummy",
+    "thumbnail": "",
+    "link": "#",
+    "images": [],
+    "soldDate": "",
+    "listedDate": "",
+    "shippedTo": "",
+    "flag": ""
+  }
+]
