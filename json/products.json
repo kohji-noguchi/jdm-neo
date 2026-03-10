@@ -20,14 +20,9 @@
     "id": 2,
     "title": "PACKAGE #2",
     "price": 180,
-    "hero": "../img/detail/package1-2.webp",
-    "thumbnail": "https://picsum.photos/400/300?random=2",
+    "hero": "../detail/img/002/IMG_1828.png",
+    "thumbnail": "",
     "link": "detail/detail_002.html",
-    "images": [
-      "../img/detail/package1-2.webp",
-      "../img/detail/package1-2.webp",
-      "https://picsum.photos/400/300?random=5"
-    ],
     "soldDate": "2026-03-09",
     "listedDate": "2026-03-09",
     "shippedTo": "Sample",

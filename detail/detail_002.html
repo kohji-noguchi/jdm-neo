@@ -4,14 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PACKAGE #2 | JDMLures</title>
-
 <link rel="stylesheet" href="../style.css">
 <link rel="stylesheet" href="../detail.css">
 
-<!-- <script src="https://www.paypal.com/sdk/js?client-id=sb&components=hosted-buttons&currency=USD&locale=en_US"></script>
- <script src="https://www.paypal.com/sdk/js?client-id=あなたのCLIENT_ID&components=hosted-buttons&currency=USD"></script> -->
-
-<script src="../js/detail.js" defer></script>
+<!-- PayPal SDK -->
+<script 
+  src="https://www.paypal.com/sdk/js?client-id=BAAYSfUfej86zu2_Z_lIDiT7Q67DauvIVyGDuJ7dYHqjZs4cyXbCMfsP8uH-0468Sg4KRFglHW7a7xa7qM&components=hosted-buttons&disable-funding=venmo&currency=USD">
+</script>
 
 </head>
 <body>
@@ -19,7 +18,7 @@
 <!-- HEADER -->
 <div class="top-bar">
   <div class="top-inner">
-    <img src="https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg" class="flag" alt="Japan Flag">
+    <img src="https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg" class="flag" alt="Japan Flag" style="width:20px; height:14px; margin-right:8px; vertical-align:middle;">
     <span id="japan-time">00:00:00</span>
   </div>
 </div>
@@ -28,32 +27,24 @@
   <img src="../img/index/logo.webp" alt="JDMLures Logo">
 </section>
 
-<!-- ===== PRODUCT TITLE ===== -->
 <section>
-  <h2 id="detail-title" data-id="2">PACKAGE #2</h2>
-  <p id="detail-price-top">$0</p>
-
-  <!-- PAYPAL BUTTON TOP -->
-  <div id="paypal-button-container-top"></div>
+  <h2 id="detail-title">PACKAGE #2</h2>
 </section>
 
-<!-- ===== HERO IMAGE ===== -->
-<section>
-  <img id="detail-hero-img" src="" alt="PACKAGE #2">
-</section>
-
-<!-- ===== ADDITIONAL IMAGES ===== -->
 <section id="additional-images">
+  <img id="detail-hero-img" src="../detail/img/002/IMG_1828.png" alt="PACKAGE #2">
+  <img src="../detail/img/002/IMG_1832.png" alt="PACKAGE #2">
+  <img src="../detail/img/002/IMG_1830.png" alt="PACKAGE #2">
+  <img src="../detail/img/002/IMG_1831.png" alt="PACKAGE #2">
 </section>
 
-<!-- ===== PRICE + BUTTON ===== -->
 <section>
-
-  <p id="detail-price-bottom">$0</p>
-
-  <!-- PAYPAL BUTTON BOTTOM -->
-  <div id="paypal-button-container-bottom"></div>
-
+  <div id="paypal-container-78BR9WKKCMMLL"></div>
+<script>
+  paypal.HostedButtons({
+    hostedButtonId: "78BR9WKKCMMLL",
+  }).render("#paypal-container-78BR9WKKCMMLL")
+</script>
 </section>
 
 <!-- ===== CONTACT ===== -->
@@ -82,6 +73,19 @@
     <a href="#">Privacy Policy</a>
   </nav>
 </footer>
+
+<!-- ===== JS: 日本時間 & PayPal ===== -->
+<script>
+  // 日本時間表示
+  function updateJapanTime(){
+    const now = new Date();
+    const japan = new Date(now.toLocaleString("en-US",{timeZone:"Asia/Tokyo"}));
+    const time = document.getElementById("japan-time");
+    if(time) time.innerText = japan.toLocaleTimeString();
+  }
+  setInterval(updateJapanTime, 1000);
+  updateJapanTime();
+</script>
 
 </body>
 </html>
